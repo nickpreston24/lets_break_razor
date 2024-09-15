@@ -25,10 +25,13 @@ public class IndexModel : PageModel
     public async Task<IActionResult> OnGetAllTodos()
     {
         var watch = Stopwatch.StartNew();
-        string query = @"select id, content, status, priority from todos where 
-                                                    # length(content) > 15 or
-                                                     content like 'test%'
-                                                    #id  = 30";
+        string query = @"
+                        select id, content, status, priority #, is_sample_data
+                        from todos
+                        where
+                            content like 'test%'
+                           or todos.is_sample_data = 1
+                        ";
 
         using var connection = SQLConnections.CreateConnection();
         var todos = (await connection.QueryAsync(query)).ToArray();
