@@ -1,0 +1,10 @@
+{
+  "version": "1.0",
+  "defaultProvider": "cdnjs",
+  "libraries": [
+    {
+      "library": "alpinejs@3.14.1",
+      "destination": "wwwroot/lib/alpinejs"
+    }
+  ]
+}
