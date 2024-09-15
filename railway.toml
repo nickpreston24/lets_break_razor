@@ -1,6 +1,6 @@
 [build]
 builder = "dockerfile"
-dockerfilePath = "./lets_break_razor/Dockerfile"
+dockerfilePath = "./Dockerfile"
 
 [deploy]
 startCommand = "dotnet lets_break_razor.dll"
