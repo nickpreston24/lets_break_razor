@@ -27,7 +27,8 @@ public class IndexModel : PageModel
         var watch = Stopwatch.StartNew();
         string query = @"select id, content, status, priority from todos where 
                                                     # length(content) > 15 or
-                                                    id  = 30";
+                                                     content like 'test%'
+                                                    #id  = 30";
 
         using var connection = SQLConnections.CreateConnection();
         var todos = (await connection.QueryAsync(query)).ToArray();
