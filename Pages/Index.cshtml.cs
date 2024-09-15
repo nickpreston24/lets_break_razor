@@ -1,4 +1,3 @@
-using CodeMechanic.Types;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
@@ -15,12 +14,6 @@ public class IndexModel : PageModel
 
     public void OnGet()
     {
-    }
-}
 
-public class Foo : Enumeration
-{
-    public Foo(int id, string name) : base(id, name)
-    {
     }
-}
+}   
