@@ -9,10 +9,18 @@
     <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 
     <div x-data="{ open: false }">
-        <button x-on:click="open = true">Expand</button>
+        <button class="btn btn-primary" x-on:click="open = true">Expand</button>
 
         <span x-show="open">
             Content...
         </span>
     </div>
+
+    <button
+        hx-get
+        hx-page="Index"
+        hx-page-handler="Swap"
+        class="btn btn-secondary">
+        Swap me
+    </button>
 </div>

@@ -17,6 +17,11 @@ public class IndexModel : PageModel
     public void OnGet()
     {
     }
+
+    public async Task<IActionResult> OnGetSwap()
+    {
+        return Content("Ping!");
+    }
 }
 
 public class RegexEnumBase : Enumeration

@@ -5,6 +5,18 @@
     {
       "library": "alpinejs@3.14.1",
       "destination": "wwwroot/lib/alpinejs"
+    },
+    {
+      "library": "tailwindcss@2.2.19",
+      "destination": "wwwroot/lib/tailwindcss"
+    },
+    {
+      "library": "daisyui@4.12.10",
+      "destination": "wwwroot/lib/daisyui"
+    },
+    {
+      "library": "htmx@2.0.2",
+      "destination": "wwwroot/lib/htmx"
     }
   ]
 }
