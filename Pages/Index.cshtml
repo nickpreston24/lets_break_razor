@@ -14,13 +14,49 @@
         <span x-show="open">
             Content...
         </span>
+
+        <p class="text-primary">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab accusamus accusantium dolore dolorem dolores dolorum eius error et eveniet incidunt nam nemo praesentium quasi qui quisquam repellendus reprehenderit sed, tempora.</p>
+
+        <p class="text-accent">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus aliquam consequuntur, culpa dicta, eligendi exercitationem illo laborum numquam obcaecati odio optio, pariatur perferendis placeat qui quia quod similique velit vitae!</p>
+
+        <div id="box_grid" class="grid grid-rows-1 grid-cols-1">
+
+            <span class="w-10 box">
+                1
+            </span>
+            <span class="w-10 box">
+                2
+            </span>
+            <span class="w-10 box">
+                3
+            </span>
+
+        </div>
+
     </div>
 
-    <button
+    <div
         hx-get
+        hx-trigger="every 1s"
         hx-page="Index"
         hx-page-handler="Swap"
         class="btn btn-secondary">
-        Swap me
-    </button>
+        Swap me, baby one moar time!
+    </div>
 </div>
+<script type="text/javascript">
+    console.log('shoop!')
+    var elements = document.querySelectorAll('.box');
+    
+    // anime({
+    //   targets: elements,
+    //   translateX: 270
+    // });
+    
+    anime({
+      targets: '.box',
+      translateX: 250,
+      scale: 2,
+      rotate: '1turn'
+    });
+</script>

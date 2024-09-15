@@ -1,20 +1,24 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
-  <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
-    <Nullable>enable</Nullable>
-    <ImplicitUsings>enable</ImplicitUsings>
-  </PropertyGroup>
-
-  <ItemGroup>
-    <PackageReference Include="CodeMechanic.Diagnostics" Version="1.0.3" />
-    <PackageReference Include="CodeMechanic.Embeds" Version="1.0.1" />
-    <PackageReference Include="CodeMechanic.FileSystem" Version="2.0.1" />
-    <PackageReference Include="CodeMechanic.Reflection" Version="1.0.4" />
-    <PackageReference Include="CodeMechanic.RegularExpressions" Version="1.0.1" />
-    <PackageReference Include="CodeMechanic.Types" Version="1.0.10" />
-    <PackageReference Include="Htmx" Version="1.8.0" />
-    <PackageReference Include="Htmx.TagHelpers" Version="1.8.0" />
-  </ItemGroup>
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+    </PropertyGroup>
+    <ItemGroup>
+        <Watch Include="**\*.cshtml"/>
+        <Watch Include="**\*.cshtml.cs"/>
+        <Watch Include="**\*.cs"/>
+    </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="CodeMechanic.Diagnostics" Version="1.0.3"/>
+        <PackageReference Include="CodeMechanic.Embeds" Version="1.0.1"/>
+        <PackageReference Include="CodeMechanic.FileSystem" Version="2.0.1"/>
+        <PackageReference Include="CodeMechanic.Reflection" Version="1.0.4"/>
+        <PackageReference Include="CodeMechanic.RegularExpressions" Version="1.0.1"/>
+        <PackageReference Include="CodeMechanic.Types" Version="1.0.10"/>
+        <PackageReference Include="Htmx" Version="1.8.0"/>
+        <PackageReference Include="Htmx.TagHelpers" Version="1.8.0"/>
+    </ItemGroup>
 
 </Project>

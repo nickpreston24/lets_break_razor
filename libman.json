@@ -17,6 +17,10 @@
     {
       "library": "htmx@2.0.2",
       "destination": "wwwroot/lib/htmx"
+    },
+    {
+      "library": "animejs@3.2.2",
+      "destination": "wwwroot/lib/animejs"
     }
   ]
 }

@@ -1,5 +1,6 @@
 using System.Reflection;
 using System.Text.RegularExpressions;
+using CodeMechanic.Types;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
@@ -20,7 +21,9 @@ public class IndexModel : PageModel
 
     public async Task<IActionResult> OnGetSwap()
     {
-        return Content("Ping!");
+        int num = Enumerable.Range(1, 10000).TakeFirstRandom();
+
+        return Content($"{num}");
     }
 }
 
