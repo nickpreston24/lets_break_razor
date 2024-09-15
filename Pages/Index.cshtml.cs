@@ -1,4 +1,5 @@
 using System.Reflection;
+using System.Text.RegularExpressions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
@@ -15,10 +16,25 @@ public class IndexModel : PageModel
 
     public void OnGet()
     {
-
     }
 }
 
+public class RegexEnumBase : Enumeration
+{
+    protected RegexEnumBase(int id, string name, string pattern, string uri = "") : base(id, name)
+    {
+        Pattern = pattern;
+        CompiledRegex = new Regex(pattern,
+            RegexOptions.IgnorePatternWhitespace | RegexOptions.Compiled | RegexOptions.IgnoreCase |
+            RegexOptions.Multiline);
+        this.uri = uri;
+    }
+
+    public string uri { get; set; } = string.Empty;
+
+    public Regex CompiledRegex { get; set; }
+    public string Pattern { get; set; }
+}
 
 public abstract class Enumeration : IComparable
 {
@@ -51,11 +67,11 @@ public abstract class Enumeration : IComparable
     }
 
     public int CompareTo(object other) => Id.CompareTo(((Enumeration)other).Id);
-    
-    
+
+
     // Other utility methods ...
 
-    
+
     // Mine
     public static implicit operator Enumeration(string name)
     {
@@ -63,10 +79,10 @@ public abstract class Enumeration : IComparable
             .SingleOrDefault(e => e.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
         return enumeration;
     }
-    
+
     // From Jimmy B.  / Reuben Bond
     // Credit: https://github.com/dotnet-architecture/eShopOnContainers/blob/dev/src/Services/Ordering/Ordering.Domain/SeedWork/Enumeration.cs
-    
+
     public override int GetHashCode() => Id.GetHashCode();
 
     public static int AbsoluteDifference(Enumeration firstValue, Enumeration secondValue)
@@ -96,6 +112,4 @@ public abstract class Enumeration : IComparable
 
         return matchingItem;
     }
-
-    
 }
