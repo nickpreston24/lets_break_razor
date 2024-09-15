@@ -6,6 +6,7 @@ EXPOSE 443
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
 COPY ["lets_break_razor.csproj", "./"]
+COPY ["nuget.config", "./"]
 RUN dotnet restore "lets_break_razor.csproj"
 COPY . .
 WORKDIR "/src/"
