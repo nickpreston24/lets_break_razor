@@ -1,8 +1,11 @@
+using System.Diagnostics;
 using System.Reflection;
 using System.Text.RegularExpressions;
 using CodeMechanic.Types;
+using Dapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using MySql.Data.MySqlClient;
 
 namespace lets_break_razor.Pages;
 
@@ -18,6 +21,25 @@ public class IndexModel : PageModel
     public void OnGet()
     {
     }
+
+    public async Task<IActionResult> OnGetAllTodos()
+    {
+        var watch = Stopwatch.StartNew();
+        string query = @"select id, content, status, priority from todos where 
+                                                    # length(content) > 15 or
+                                                    id  = 30";
+
+        using var connection = SQLConnections.CreateConnection();
+        var todos = (await connection.QueryAsync(query)).ToArray();
+
+        // var todos = (await connection.QueryAsync("get_all_todos", CommandType.StoredProcedure)).ToArray();
+
+        watch.Stop();
+        var ms = watch.ElapsedMilliseconds;
+
+        return Content($"done.  found {todos.Length} todos, taking {ms} milliseconds");
+    }
+
 
     public async Task<IActionResult> OnGetSwap()
     {
@@ -119,5 +141,27 @@ public abstract class Enumeration : IComparable
             throw new InvalidOperationException($"'{value}' is not a valid {description} in {typeof(T)}");
 
         return matchingItem;
+    }
+}
+
+public static class SQLConnections
+{
+    public static MySqlConnection CreateConnection() => GetMySQLConnectionString().AsConnection();
+
+    public static MySqlConnection AsConnection(this string connectionString) => new MySqlConnection(connectionString);
+
+    public static string GetMySQLConnectionString()
+    {
+        var connectionString = new MySqlConnectionStringBuilder()
+        {
+            Database = Environment.GetEnvironmentVariable("MYSQLDATABASE"),
+            Server = Environment.GetEnvironmentVariable("MYSQLHOST"),
+            Password = Environment.GetEnvironmentVariable("MYSQLPASSWORD"),
+            UserID = Environment.GetEnvironmentVariable("MYSQLUSER"),
+            Port = (uint)Environment.GetEnvironmentVariable("MYSQLPORT").ToInt()
+        }.ToString();
+
+        if (connectionString.IsEmpty()) throw new ArgumentNullException(nameof(connectionString));
+        return connectionString;
     }
 }

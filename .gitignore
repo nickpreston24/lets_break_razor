@@ -1,3 +1,4 @@
+publish/
 *.log
 *.nupkg
 .forklift/

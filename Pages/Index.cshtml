@@ -11,13 +11,21 @@
     <div x-data="{ open: false }">
         <button class="btn btn-primary" x-on:click="open = true">Expand</button>
 
-        <span x-show="open">
-            Content...
+        <span x-show="open" class="grid grid-cols-2 h-64">
+            <p class="text-primary">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab accusamus accusantium dolore dolorem dolores dolorum eius error et eveniet incidunt nam nemo praesentium quasi qui quisquam repellendus reprehenderit sed, tempora.</p>
+
+            <p class="text-accent">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus aliquam consequuntur, culpa dicta, eligendi exercitationem illo laborum numquam obcaecati odio optio, pariatur perferendis placeat qui quia quod similique velit vitae!</p>
+
+            <p>@Environment.GetEnvironmentVariable("foo")</p>
         </span>
 
-        <p class="text-primary">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab accusamus accusantium dolore dolorem dolores dolorum eius error et eveniet incidunt nam nemo praesentium quasi qui quisquam repellendus reprehenderit sed, tempora.</p>
+        <div hx-get
+             hx-page="Index"
+             hx-page-handler="AllTodos"
+             hx-trigger="intersect">
 
-        <p class="text-accent">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus aliquam consequuntur, culpa dicta, eligendi exercitationem illo laborum numquam obcaecati odio optio, pariatur perferendis placeat qui quia quod similique velit vitae!</p>
+        </div>
+
 
         <div id="box_grid" class="grid grid-rows-1 grid-cols-1">
 
@@ -47,6 +55,16 @@
 <script type="text/javascript">
     console.log('shoop!')
     var elements = document.querySelectorAll('.box');
+    
+    
+    anime({
+      targets: '.box',
+      translateX: 250,
+      rotate: '1turn',
+      backgroundColor: '#FFF',
+      duration: 800
+    });
+    
     
     // anime({
     //   targets: elements,
