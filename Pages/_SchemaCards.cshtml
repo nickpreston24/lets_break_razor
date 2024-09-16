@@ -1,0 +1,20 @@
+@model SchemaInfo
+
+@{
+    var tables = Model.table_info;
+}
+
+<section class="grid grid-cols-1 grid-rows-auto md:grid-cols-2 lg:grid-cols-3">
+    @foreach (var table in tables)
+    {
+        <div class="card bg-base-100 w-96 shadow-xl">
+            <div class="card-body">
+                <h2 class="card-title">@table.table_name</h2>
+                <p>@table.table_type</p>
+                @* <div class="card-actions justify-end"> *@
+                @*     <button class="btn btn-primary">Buy Now</button> *@
+                @* </div> *@
+            </div>
+        </div>
+    }
+</section>

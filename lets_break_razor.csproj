@@ -9,6 +9,7 @@
         <Watch Include="**\*.cshtml" />
         <Watch Include="**\*.cshtml.cs" />
         <Watch Include="**\*.cs" />
+        <Watch Include="/js/*.js" />
         <Watch Include=".env" />
     </ItemGroup>
     <ItemGroup>
