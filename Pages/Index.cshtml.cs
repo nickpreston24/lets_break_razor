@@ -1,5 +1,6 @@
 using System.Diagnostics;
 using System.Reflection;
+using System.Text;
 using System.Text.RegularExpressions;
 using CodeMechanic.Diagnostics;
 using CodeMechanic.FileSystem;
@@ -68,13 +69,39 @@ public class IndexModel : PageModel
 
         Console.WriteLine($"todos from readme {todos_from_readme_files.Count}");
 
-        var results = new LocalTodos()
+        var results = new LocalTodos
         {
             CommentsWithTodos = todos_from_source_files.ToArray(),
             ReadmeTodos = todos_from_readme_files.ToArray()
         };
 
-        return Content("moopsy!");
+        // build quick and dirty sql for storing todos:
+        // var sb = new StringBuilder(@"insert into")
+        //     .Append(" todos (content, description) values ");
+
+        // foreach (var comment in todos_from_source_files
+        //              .Where(c => c?.content?.Length > 0
+        //                          && c?.content?.Length <= 250))
+        // {
+        //     sb.AppendLine($"('{comment?.content ?? string.Empty}'),");
+        // }
+
+        // sb.RemoveFromEnd(2);
+
+        // foreach (var readme in todos_from_readme_files.Where(r => r.content.Length > 0
+        //                                                           && r.content.Length <= 250))
+        // {
+        //     sb.AppendLine($"('{readme.content}')");
+        // }
+
+        // string query = sb.ToString();
+        // Console.WriteLine("query len:>> " + query.Length);
+        //
+        // new SaveFile(query).To(cwd, "sql").As("sync_local_todos.sql");
+
+        // Console.WriteLine("insert query: >> \n" + query);
+
+        return Content(results.ToString());
     }
 
     public async Task<IActionResult> OnGetSchemaInsights()
@@ -156,6 +183,11 @@ public class LocalTodos
 {
     public TodoComment[] CommentsWithTodos { get; set; } = Array.Empty<TodoComment>();
     public ReadMeTodo[] ReadmeTodos { get; set; } = Array.Empty<ReadMeTodo>();
+
+    public override string ToString()
+    {
+        return $"total comment todos: {CommentsWithTodos.Length}\n total readme todos: {ReadmeTodos.Length}";
+    }
 }
 
 public class TodoComment

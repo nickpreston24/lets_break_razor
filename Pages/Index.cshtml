@@ -4,13 +4,15 @@
     ViewData["Title"] = "Home page";
 }
 
-<div x-data="setup()" class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<section x-data="setup_main_page()" class="text-center grid grid-cols-2">
 
-    <div x-data="{ open: false }">
+    <section x-data="{ open: false }" class="h-screen border-2 border-primary">
 
         <h1 class="text-accent text-lg">Alpinejs test</h1>
+
+        @* <pre x-text="current_domain"></pre> *@
+        @* <pre x-text="is_local"></pre> *@
+        @* <pre x-text="is_prod"></pre> *@
 
         <button class="btn btn-primary" x-text="open ?  'Close' :  'Expand' " x-on:click="open = !open"></button>
 
@@ -42,7 +44,7 @@
             <p>@Environment.GetEnvironmentVariable("foo")</p>
         </div>
 
-        <div>
+        <div class="flex flex-col gap-4">
             <h1 class="text-accent text-lg">animejs test</h1>
             <div id="box_grid" class="grid grid-rows-1 grid-cols-1">
 
@@ -58,40 +60,55 @@
             </div>
         </div>
 
-    </div>
-
-    <div
-        hx-get
-        hx-trigger="every 1s"
-        hx-page="Index"
-        hx-page-handler="Swap"
-        class="btn btn-secondary">
-        Swap me, baby one moar time!
-    </div>
-
-
-    <section class="h-screen ">
-        <h1 class="text-primary text-xl">Test Schema fetching</h1>
-
-        <div hx-get
-             hx-page="Index"
-             hx-page-handler="SchemaInsights"
-             hx-trigger="intersect"
-             hx-on::after-request="run_schema_card_animations()">
-        </div>
-
     </section>
 
-    <section class="h-screen">
-        <h1 class="text-primary text-xl">Test fetching of local todo comments</h1>
-        <div hx-get
-             hx-page="Index"
-             hx-page-handler="LocalTodoComments"
-             hx-trigger="intersect">
+
+    <section class="h-screen flex flex-col gap-4">
+
+
+        <div>
+            <h1>HTMX tests</h1>
+            <div
+                hx-get
+                hx-trigger="every 1s"
+                hx-page="Index"
+                hx-page-handler="Swap"
+                class="btn btn-secondary">
+                Swap me, baby one moar time!
+            </div>
+        </div>
+
+
+        <template x-if="is_local">
+            <h1 class="text-primary text-xl">Test Schema fetching</h1>
+
+            <div hx-get
+                 hx-page="Index"
+                 hx-page-handler="SchemaInsights"
+                 hx-trigger="intersect"
+                 hx-on::after-request="run_schema_card_animations()">
+            </div>
+
+        </template>
+
+        <div class="h-screen border-0 border-red-500">
+            <template x-if="!is_local" x-cloak>
+
+                <div>
+
+                    <h1 class="text-primary text-xl">Test fetching of local todo comments</h1>
+                    <div hx-get
+                         hx-page="Index"
+                         hx-page-handler="LocalTodoComments"
+                         hx-trigger="intersect">
+                    </div>
+                </div>
+            </template>
         </div>
     </section>
 
-</div>
+
+</section>
 <script type="text/javascript">
     console.log('shoop!')
     var elements = document.querySelectorAll('.box');
@@ -123,11 +140,13 @@
         });
     }
     
-    function setup() {
+    function setup_main_page() {
         return {
-            
-           
-            
+            current_domain: window.location.href,
+            get is_local() { 
+                return this.current_domain.includes('127.1.1.0')
+                 || this.current_domain.includes('localhost') } ,
+            // get is_prod() { !this.is_local(); }         
         }
     }
 </script>
