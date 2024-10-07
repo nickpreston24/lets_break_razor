@@ -125,10 +125,8 @@ public class IndexModel : PageModel
                         ";
 
         using var connection = SQLConnections.CreateConnection();
-               
-               var todos =
-                (await connection.QueryAsync<Part>(    query)).ToArray();
 
+        var todos = (await connection.QueryAsync<Part>(query)).ToArray();
 
         // var todos = (await connection.QueryAsync("get_all_todos", CommandType.StoredProcedure)).ToArray();
 
