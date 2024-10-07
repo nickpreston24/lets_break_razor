@@ -12,24 +12,29 @@ public static class FS2
         // root.Dump("root");
         // if (saveFile.root.IsEmpty()) throw new NullReferenceException(nameof(saveFile.root));
         saveFile.root = root;
-        // if (!subfolders.IsNullOrEmpty()) 
+        // if (!subfolders.IsNullOrEmpty())
         saveFile.subfolders = subfolders;
         return saveFile;
     }
 
     public static FileInfo As(this SaveFile save_file, string filename, bool debug = false)
     {
-        if (filename.IsNullOrEmpty()) throw new ArgumentNullException(nameof(filename));
-        if (!Path.HasExtension(filename)) throw new ArgumentException($"{nameof(filename)} must have an extension!");
+        if (filename.IsNullOrEmpty())
+            throw new ArgumentNullException(nameof(filename));
+        if (!Path.HasExtension(filename))
+            throw new ArgumentException($"{nameof(filename)} must have an extension!");
         save_file.file_name = filename;
         return SaveAsInternal(save_file, debug: true);
     }
 
     private static FileInfo SaveAsInternal(this SaveFile saveFile, bool debug = false)
     {
-        if (saveFile == null) throw new NullReferenceException(nameof(saveFile));
-        if (saveFile.root.IsEmpty()) throw new NullReferenceException(nameof(saveFile.root));
-        if (saveFile.text.IsEmpty()) throw new NullReferenceException(nameof(saveFile.text));
+        if (saveFile == null)
+            throw new NullReferenceException(nameof(saveFile));
+        if (saveFile.root.IsEmpty())
+            throw new NullReferenceException(nameof(saveFile.root));
+        if (saveFile.text.IsEmpty())
+            throw new NullReferenceException(nameof(saveFile.text));
 
         string save_folder = saveFile.root;
 
@@ -51,7 +56,8 @@ public static class FS2
         if (debug)
             Console.WriteLine("save path: \n" + save_path);
 
-        if (!Directory.Exists(save_folder)) Directory.CreateDirectory(save_folder);
+        if (!Directory.Exists(save_folder))
+            Directory.CreateDirectory(save_folder);
 
         // Write to full save path:
         if (!saveFile.text.IsNullOrEmpty())
