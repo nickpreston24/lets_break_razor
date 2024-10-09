@@ -6,9 +6,9 @@
         <ImplicitUsings>enable</ImplicitUsings>
     </PropertyGroup>
     <ItemGroup>
-        <Watch Include="**\*.cshtml" />
+        <!-- <Watch Include="**\*.cshtml" />
         <Watch Include="**\*.cshtml.cs" />
-        <Watch Include="**\*.cs" />
+        <Watch Include="**\*.cs" /> -->
         <Watch Include="/js/*.js" />
         <Watch Include=".env" />
     </ItemGroup>
@@ -16,7 +16,7 @@
         <PackageReference Include="CodeMechanic.Diagnostics" Version="1.0.3" />
         <PackageReference Include="CodeMechanic.Embeds" Version="1.0.1" />
         <PackageReference Include="CodeMechanic.FileSystem" Version="2.0.1" />
-        <PackageReference Include="CodeMechanic.Logging" Version="1.0.0" />
+        <!-- <PackageReference Include="CodeMechanic.Logging" Version="1.0.0" /> -->
         <PackageReference Include="CodeMechanic.Reflection" Version="1.0.4" />
         <PackageReference Include="CodeMechanic.RegularExpressions" Version="1.0.1" />
         <PackageReference Include="CodeMechanic.Types" Version="1.0.10" />
