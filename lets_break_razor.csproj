@@ -4,30 +4,37 @@
         <TargetFramework>net8.0</TargetFramework>
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
+
+
+        <PackAsTool>true</PackAsTool>
+        <ToolCommandName>lets_break_razor</ToolCommandName>
+        <PackageOutputPath>./nupkg</PackageOutputPath>
+        <IsPackable>true</IsPackable>
+
     </PropertyGroup>
     <ItemGroup>
-        <Watch Include="**\*.cshtml" />
-        <Watch Include="**\*.cshtml.cs" />
-        <Watch Include="**\*.cs" />
-        <Watch Include="/js/*.js" />
-        <Watch Include=".env" />
+        <Watch Include="**\*.cshtml"/>
+        <Watch Include="**\*.cshtml.cs"/>
+        <Watch Include="**\*.cs"/>
+        <Watch Include="/js/*.js"/>
+        <Watch Include=".env"/>
     </ItemGroup>
     <ItemGroup>
-        <PackageReference Include="CodeMechanic.Diagnostics" Version="1.0.3" />
-        <PackageReference Include="CodeMechanic.Embeds" Version="1.0.1" />
-        <PackageReference Include="CodeMechanic.FileSystem" Version="2.0.1" />
-        <PackageReference Include="CodeMechanic.Reflection" Version="1.0.4" />
-        <PackageReference Include="CodeMechanic.RegularExpressions" Version="1.0.1" />
-        <PackageReference Include="CodeMechanic.Types" Version="1.0.10" />
+        <PackageReference Include="CodeMechanic.Diagnostics" Version="1.0.3"/>
+        <PackageReference Include="CodeMechanic.Embeds" Version="1.0.1"/>
+        <PackageReference Include="CodeMechanic.FileSystem" Version="2.0.1"/>
+        <PackageReference Include="CodeMechanic.Reflection" Version="1.0.4"/>
+        <PackageReference Include="CodeMechanic.RegularExpressions" Version="1.0.1"/>
+        <PackageReference Include="CodeMechanic.Types" Version="1.0.10"/>
         <PackageReference Include="CSharpier.MSBuild" Version="0.29.2">
-          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-          <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+            <PrivateAssets>all</PrivateAssets>
         </PackageReference>
-        <PackageReference Include="Dapper" Version="2.1.35" />
-        <PackageReference Include="Htmx" Version="1.8.0" />
-        <PackageReference Include="Htmx.TagHelpers" Version="1.8.0" />
-        <PackageReference Include="Hydro" Version="0.15.1" />
-        <PackageReference Include="MySql.Data" Version="9.0.0" />
+        <PackageReference Include="Dapper" Version="2.1.35"/>
+        <PackageReference Include="Htmx" Version="1.8.0"/>
+        <PackageReference Include="Htmx.TagHelpers" Version="1.8.0"/>
+        <PackageReference Include="Hydro" Version="0.15.1"/>
+        <PackageReference Include="MySql.Data" Version="9.0.0"/>
     </ItemGroup>
 
 </Project>
