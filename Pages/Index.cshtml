@@ -91,20 +91,20 @@
 
         </template>
 
-        <div class="h-screen border-2 border-red-500">
-            <template x-if="!is_local" x-cloak>
+        <template x-if="!is_local" x-cloak>
+            <div class="h-screen border-2 border-yellow-500">
 
-                <div>
+                    <div>
 
-                    <h1 class="text-primary text-xl">Test fetching of local todo comments</h1>
-                    <div hx-get
-                         hx-page="Index"
-                         hx-page-handler="LocalTodoComments"
-                         hx-trigger="intersect">
+                        <h1 class="text-primary text-xl">Test fetching of local todo comments</h1>
+                        <div hx-get
+                            hx-page="Index"
+                            hx-page-handler="LocalTodoComments"
+                            hx-trigger="intersect">
+                        </div>
                     </div>
-                </div>
-            </template>
-        </div>
+            </div>
+        </template>
     </section>
 
 
