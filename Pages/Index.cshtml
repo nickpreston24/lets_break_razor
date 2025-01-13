@@ -6,7 +6,7 @@
 
 <section x-data="setup_main_page()" class="text-center grid grid-cols-2">
 
-    <section x-data="{ open: false }" class="h-screen border-2 border-primary">
+    <section x-data="{ open: false }" class="h-screen border-0 border-primary">
 
         <h1 class="text-accent text-lg">Alpinejs test</h1>
 
@@ -94,15 +94,15 @@
         <template x-if="!is_local" x-cloak>
             <div class="h-screen border-2 border-yellow-500">
 
-                    <div>
+                <div>
 
-                        <h1 class="text-primary text-xl">Test fetching of local todo comments</h1>
-                        <div hx-get
-                            hx-page="Index"
-                            hx-page-handler="LocalTodoComments"
-                            hx-trigger="intersect">
-                        </div>
+                    <h1 class="text-primary text-xl">Test fetching of local todo comments</h1>
+                    <div hx-get
+                         hx-page="Index"
+                         hx-page-handler="LocalTodoComments"
+                         hx-trigger="intersect">
                     </div>
+                </div>
             </div>
         </template>
     </section>

@@ -1,8 +1,6 @@
 using System.Diagnostics;
 using System.Reflection;
-using System.Text;
 using System.Text.RegularExpressions;
-using CodeMechanic.Diagnostics;
 using CodeMechanic.FileSystem;
 using CodeMechanic.RegularExpressions;
 using CodeMechanic.Types;
